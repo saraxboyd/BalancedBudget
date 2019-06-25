@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron mt-3">
+        <div class="text-center">
+            <h1>Logout Successful</h1>
+            <p>A new way to track and visualize spending habbits</p>
+            <a href="{% url 'index' %}"><button type="button" class="btn btn-outline-dark btn-large">Home</button></a>
+            <a href="{% url 'login' %}"><button type="button" class="btn btn-dark btn-large">Login</button></a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

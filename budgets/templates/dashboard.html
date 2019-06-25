@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <div class="containter" style="width: 100%">
+        <h1>Hello {{ user.username }}!</h1>
+        <p>Welcome to your dashboard</p>
+        <a href="{% url 'admin:index' %}"><button type="button" class="btn btn-outline-dark btn-large">Update Database</button></a>
+    </div>
+</div>
+
+{% block budgetData %}
+{% endblock %}
+
+{% endblock %}

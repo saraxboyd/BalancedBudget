@@ -1,0 +1,37 @@
+{% extends 'dashboard.html' %}
+{% block budgetData %}
+
+{% for budget in budgets %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Budget name: {{ budget.name }}</h1>
+                <ul>
+                    <li>Start and end date: {{ budget.startDate }} to {{ budget.endDate }}</li>
+                    <li>Percentage of budget used: <em>Calculate</em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% for limit in limits %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Category: {{ limit.category.category }}</h1>
+                    <ul>
+                        <li>Amount: {{ limit.amount }}</li>
+                    </ul>
+                    {% for item in expenses %}
+                        {% if item.category.categoryID == limit.category.categoryID %}
+                            <b><p>Place: {{ item.title }}</p></b>
+                            <p>Description: {{ item.description }}</p>
+                            <p>Date: {{item.date }}</p>
+                            <p>Amount: {{item.amount }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endfor %}
+{% endblock %}
