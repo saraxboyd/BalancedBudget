@@ -120,5 +120,4 @@ USE_TZ = True
 
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
-LOGOUT_REDIRECT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/admin'
