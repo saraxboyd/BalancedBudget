@@ -6,7 +6,12 @@
     <div class="containter" style="width: 100%">
         <h1>Hello {{ user.username }}!</h1>
         <p>Welcome to your dashboard</p>
-        <a href="{% url 'admin:index' %}"><button type="button" class="btn btn-outline-dark btn-large">Update Database</button></a>
+        <a href="#"><button type="button" class="btn btn-outline-dark btn-large">Add Budget</button></a>
+        <a href="#"><button type="button" class="btn btn-outline-dark btn-large">Add Category</button></a>
+        <a href="#"><button type="button" class="btn btn-outline-dark btn-large">Add Expense</button></a>
+        {% if user.is_superuser %}
+            <a href="{% url 'admin:index' %}"><button type="button" class="btn btn-outline-dark btn-large">View Database</button></a>
+        {% endif %}
         <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-large">Logout</button></a>
     </div>
 </div>

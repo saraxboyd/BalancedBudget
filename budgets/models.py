@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from datetime import date, timedelta
 
 # Create your models here.
@@ -17,6 +18,7 @@ class Budget(models.Model):
     startDate = models.DateField(default=date.today, db_column='Start Date')
     endDate = models.DateField(default=date.today, db_column='End Date')
     current = models.BooleanField(default=True, db_column='Current Budget')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, db_column='User', null=True)
 
 class Expense(models.Model):
     expenseID = models.AutoField(primary_key=True, db_column='ExpenseID')

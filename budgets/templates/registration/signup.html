@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <div class="containter" style="width: 100%">
+    {% if user.is_authenticated %}
+    <h2> {{ user.username }}, you are already registered</h2>
+    <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark btn-large">Go to Dashboard</button></a>
+    {% if user.is_superuser %}
+        <a href="{% url 'admin:index' %}"><button type="button" class="btn btn-outline-dark btn-large">View Database</button></a>
+    {% endif %}
+    <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-large">Logout</button></a>
+    </div>
+</div>
+    {% else %}
+    <div class="jumbotron">
+        <div class="containter" style="width: 100%">
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-outline-dark btn-large">Sign up</button>
+  </form>
+  {% endif %}
+  </div>
+</div>
+{% endblock %}
