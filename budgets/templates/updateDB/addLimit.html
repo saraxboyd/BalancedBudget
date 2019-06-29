@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="jumbotron text-center">
+    <div class="containter" style="width: 100%">
+        <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark btn-large">Dashboard</button></a>
+        <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-large">Logout</button></a>
+        <h1>Add Limit</h1>
+
+        <form action="{% url 'success' %}" method="POST">
+            <div>
+              {% csrf_token %}
+              {{ NewLimitForm }}
+            </div>
+            <button type="submit" name="addLimit"><span>Add</span></button>
+        </form>
+    </div>
+</div>
+{% endblock %}

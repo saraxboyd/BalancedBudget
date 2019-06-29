@@ -19,6 +19,8 @@ class Budget(models.Model):
     endDate = models.DateField(default=date.today, db_column='End Date')
     current = models.BooleanField(default=True, db_column='Current Budget')
     user = models.ForeignKey(User, on_delete=models.CASCADE, db_column='User', null=True)
+    def __str__(self):
+        return self.name
 
 class Expense(models.Model):
     expenseID = models.AutoField(primary_key=True, db_column='ExpenseID')
