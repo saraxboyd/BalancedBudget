@@ -8,6 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap 4 -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Custom Style -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
@@ -28,5 +30,18 @@
         <!-- Load in sweetalert2 website and custom main.js file-->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <script type="text/javascript" src="{% static '/js/main.js' %}"></script>
+
+        <!-- Include the jquery Ui here  -->
+        <script>
+         $(function() {
+           $( ".datepicker" ).datepicker({
+             changeMonth: true,
+             changeYear: true,
+             yearRange: "1900:2012",
+             // You can put more options here.
+       
+           });
+         });
+         </script>
     </body>
 </html>

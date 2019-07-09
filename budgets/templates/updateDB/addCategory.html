@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
-{% crispy from form.helper %}
 
 {% block content %}
 <div class="jumbotron">
     <div class="containter" style="width: 100%">
         <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-dark btn-large">Dashboard</button></a>
         <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-large">Logout</button></a>
-        <h1>Add Expense</h1>
+        <h1>Add Category</h1>
+
         <form action="{% url 'success' %}" method="POST">
             <div>
-                {% csrf_token %}
-                <!-- {% crispy NewExpenseForm %} -->
-                {{ NewExpenseForm|crispy }}
+              {% csrf_token %}
+              {{ NewCategoryForm|crispy }}
             </div>
-            <button type="submit" name="addExpense" class="btn btn-outline-dark btn-large"><span>Add</span></button>
+            <button type="submit" name="addCategory" class="btn btn-outline-dark btn-large"><span>Add</span></button>
         </form>
     </div>
 </div>

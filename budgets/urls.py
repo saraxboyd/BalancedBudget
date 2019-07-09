@@ -12,5 +12,6 @@ urlpatterns = [
     url('addBudget', views.addBudget, name = 'addBudget'), # create url path to results page
     url('addLimit', views.addLimit, name = 'addLimit'), # create url path to results page
     url('addExpense', views.addExpense, name = 'addExpense'), # create url path to results page
+    url('addCategory', views.addCategory, name = 'addCategory'), # create url path to results page
     url('success', views.success, name = 'success'), # create url path to results page
 ]

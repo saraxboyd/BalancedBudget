@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'budgets'
+    'budgets',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +118,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+CRISPY_FORMS_PACK = 'bootstrap4'
 
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'

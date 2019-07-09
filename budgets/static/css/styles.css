@@ -1,0 +1,9 @@
+span.asteriskField {
+    display: none;
+}
+.control-label {
+    margin: 0 10px 0 0;
+}
+.controls {
+    margin: 5px 0;
+}
