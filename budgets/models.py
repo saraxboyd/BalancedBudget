@@ -6,11 +6,13 @@ from datetime import date, timedelta
 class Category(models.Model):
     categoryID = models.AutoField(primary_key = True, db_column='CategoryID')
     category = models.CharField(max_length=50, db_column='Category')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, db_column='User', null=True)
 
     def __str__(self):
         return self.category
     class Meta:
         verbose_name_plural = "Categories"
+        unique_together = (('category', 'user'),)
 
 class Budget(models.Model):
     budgetID = models.AutoField(primary_key=True, db_column='BudgetID')
@@ -21,12 +23,14 @@ class Budget(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, db_column='User', null=True)
     def __str__(self):
         return self.name
+    class Meta:
+        unique_together = (('name', 'user'),)
 
 class Expense(models.Model):
     expenseID = models.AutoField(primary_key=True, db_column='ExpenseID')
     budgetID = models.ForeignKey(Budget, on_delete=models.CASCADE, db_column='BudgetID')
     title = models.CharField(max_length=100, db_column='Title')
-    description = models.TextField(db_column='Description')
+    description = models.TextField(db_column='Description', blank=True)
     date = models.DateField(default=date.today, db_column='Date')
     amount = models.FloatField(db_column='Amount')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, db_column='Category')
@@ -36,4 +40,7 @@ class Limit(models.Model):
     budgetID = models.ForeignKey(Budget, on_delete=models.CASCADE, db_column='BudgetID')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, db_column='Category')
     amount = models.FloatField(db_column='Amount')
+
+    class Meta:
+        unique_together = (('budgetID', 'category'),)
 

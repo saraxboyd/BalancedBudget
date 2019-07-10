@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import modelformset_factory
+from django.contrib import messages
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -64,28 +65,52 @@ def success(request):
         form = NewBudgetForm(request.POST)
         if form.is_valid():
             newBudget = form.save(commit=False)
-            newBudget.user = request.user
-            newBudget.save()
-        return render(request, 'updateDB/success.html')
+            try:
+                newBudget.user = request.user
+                newBudget.save()
+                messages.success(request, "Successfully added a new budget")
+                return redirect('dashboard.html')
+            except:
+                pass
+        messages.error(request, "Cannot have two budgets with the same name")
+        return redirect('dashboard.html')
 
     elif 'addLimit' in request.POST:
+        print('in limit')
         form = NewLimitForm(request.POST, user=request.user)
         if form.is_valid():
             newLimit = form.save(commit=False)
-            newLimit.user = request.user
-            newLimit.save()
-        return render(request, 'updateDB/success.html')
+            try:
+                print('in limit success')
+                newLimit.user = request.user
+                newLimit.save()
+                messages.success(request, "Successfully added a new limit")
+                return redirect('dashboard.html')
+            except:
+                pass    
+        messages.error(request, "Cannot have two limits with the same name in the same budget")
+        return redirect('dashboard.html')
 
     elif 'addCategory' in request.POST:
         form = NewCategoryForm(request.POST)
         if form.is_valid():
             newCategory = form.save(commit=False)
-            newCategory.save()
-        return render(request, 'updateDB/success.html')
+            try:
+                newCategory.user = request.user
+                newCategory.save()
+                messages.success(request, "Successfully added a new category")
+                return redirect('dashboard.html')
+            except:
+                pass
+        messages.error(request, "Cannot have two categories with the same name")
+        return redirect('dashboard.html')
     else:
         form = NewExpenseForm(request.POST, user=request.user)
         if form.is_valid():
             newExpense = form.save(commit=False)
             newExpense.user = request.user
             newExpense.save()
-        return render(request, 'updateDB/success.html')
+            messages.success(request, "Successfully added a new expense")
+            return redirect('dashboard.html')
+        messages.error(request, "Oops, something went wrong, the expense was not added")
+        return redirect('dashboard.html')

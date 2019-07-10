@@ -1,9 +1,11 @@
-span.asteriskField {
-    display: none;
+/* Messages after modifying database */
+.error {
+    background-color: lightcoral;
+    color: rgb(238, 57, 57);
+    text-align: center;
 }
-.control-label {
-    margin: 0 10px 0 0;
-}
-.controls {
-    margin: 5px 0;
+.success {
+    background-color: lightgreen;
+    color: rgb(61, 160, 61);
+    text-align: center;
 }

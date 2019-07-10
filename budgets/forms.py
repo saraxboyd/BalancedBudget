@@ -31,7 +31,6 @@ class NewLimitForm(forms.ModelForm):
         super(NewLimitForm, self).__init__ (*args, **kwargs)
         self.fields['budgetID'].queryset = Budget.objects.filter(user=user)
     class Meta:
-        print('in Meta')
         model = Limit
         fields = ['budgetID', 'category', 'amount']
         widgets = {

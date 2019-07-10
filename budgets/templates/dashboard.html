@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="jumbotron text-center">
+<div class="jumbotron text-center mb-0">
     <div class="containter" style="width: 100%">
         <h1>Hello {{ user.username }}!</h1>
         <p>Welcome to your dashboard</p>
@@ -16,6 +16,13 @@
         <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-large">Logout</button></a>
     </div>
 </div>
+{% if messages %}
+  {% for message in messages %}
+    <div class="message {{ message.tags }}">
+      <p class="p-3">{{ message }}</p>
+    </div>
+  {% endfor %}
+{% endif %}
 
 {% block budgetData %}
 {% endblock %}
